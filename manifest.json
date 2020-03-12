@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "name": "My Cool Extension",
+  "name": "Github extension",
   "version": "0.1",
   "background": {
     "scripts": ["main.js"]
@@ -8,13 +8,13 @@
   "content_scripts": [
     {
       "matches": [
-         "https://github.com/*/*/issues"
+         "https://github.com/*/*/issues","https://github.com/*/*/issues?q=is%3Aissue+is%3Aclosed"
       ],
       "js": ["main.js"]
     }
   ],
   "browser_action": {
-    "default_icon": "icon.jpg"
+    "default_icon": "icon.png"
   },
   "permissions": [
     "http://www.api.github.com/*"
