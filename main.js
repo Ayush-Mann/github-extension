@@ -25,9 +25,9 @@
           var issue = document.getElementById(`issue_${issueNumber}_link`)
           // console.log(issueNumber)
           var p = document.createElement('p')
-          // console.log(document.querySelector('.user-profile-link').innerText.split(' ').pop())
+          // console.log(document.querySelector('.user-profile-link').innerText.split(' '))
           // console.log(modifiedHref.split('/')[3])
-          document.querySelector('.user-profile-link').innerText.split(' ').pop() == modifiedHref.split('/')[3] ? p.innerText = `${filtered.join(' ').split(' ')[2]}` : p.innerText = `${filtered.join(' ').split(' ')[1]}`
+          document.querySelector('.user-profile-link').innerText.split(' ').pop().toLowerCase() == modifiedHref.split('/')[3] ? p.innerText = `${filtered.join(' ').split(' ')[2]}` : p.innerText = `${filtered.join(' ').split(' ')[1]}`
           p.style.background="#6FCA55"
           p.style.color = "#ffffff"
           p.style.border="1px solid grey"
