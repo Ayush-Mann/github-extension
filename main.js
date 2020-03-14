@@ -1,6 +1,9 @@
 
 
 
+
+
+
 (function (){ var issues = document.querySelectorAll('.opened-by')
 var totalIssues = [...issues].map(j => j.innerText.trim().replace(/\n/ig, '').split(' ')[0])
 // console.log(totalIssues)
