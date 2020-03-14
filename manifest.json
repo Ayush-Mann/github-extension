@@ -8,7 +8,7 @@
   "content_scripts": [
     {
       "matches": [
-         "https://github.com/*/*/issues","https://github.com/*/*/issues?q=is%3Aissue+is%3Aclosed"
+         "https://github.com/*/*/issues","https://github.com/*/*/issues?q=is%3Aissue+is%3Aclosed","https://github.com/*/*/issues/q=is%3Aissue+is%3Aopen"
       ],
       "js": ["main.js"]
     }

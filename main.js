@@ -22,23 +22,40 @@ function fetchURLs() {
         var item = doc2.querySelectorAll('.js-issue-sidebar-form');
         let children = item[1].innerText
         let regexElem = children.replace(/ /g, '').trim().replace(/\r?\n|\r/g, " ").split('    ')
+        console.log(regexElem,"regex")
         let filtered = regexElem.filter(item => item.length > 0)
         let projects=[]
-        // console.log(filtered,"filter brefore first shift")
+        console.log(filtered,"filter brefore first shift")
 
         filtered.shift()
-        // console.log(filtered,"filter after first shift")
+        console.log(filtered,"filter after first shift")
 
         if(filtered[0]=="Projects"|| (filtered[0]==" Projects")){
           filtered.shift()
         }
-        filtered.map(project=>{
-          // console.log(project)
-          projects.push((project.trim().split("   ")[0]))
-        })
-        
-        // console.log(filtered,"filter after if condition")
-        // console.log("projects",projects)
+        // let x= document.querySelector('.user-profile-link')
+        // console.log(x.innerText.split(' ').pop().toLowerCase())
+        // console.log(modifiedHref.split('/')[3].toLowerCase())
+        if(document.querySelector('.user-profile-link').innerText.split(' ').pop().toLowerCase() == modifiedHref.split('/')[3].toLowerCase()){
+          projects.push(filtered[0])
+          filtered.map(project=>{
+            
+            if(project.includes("  ")){
+              console.log(" space detected")
+              projects.push(project)
+            }
+          })
+          console.log(" repo of logged in user")
+        }else{
+          filtered.map(project=>{
+            // console.log(project)
+            projects.push((project.trim().split("   ")[0]))
+            
+          })
+          console.log("repo of unlogged user")
+        }
+        console.log(filtered,"filter after if condition")
+        console.log("projects",projects)
         var issue = document.getElementById(`issue_${issueNumber}_link`)
         // console.log(issueNumber)
         var p = document.createElement('p')
@@ -50,7 +67,10 @@ function fetchURLs() {
         // console.log(x,"x")
         // x.innerText.split(' ').pop().toLowerCase() == modifiedHref.split('/')[3] ? p.innerText = `${filtered.join(' ').split(' ')[2]}` : p.innerText = `${filtered.join(' ').split(' ')[1]}`
         
-        p.innerText = projects[0]
+
+        //logic for showing multiple projects
+        
+        p.innerText = projects.join("  ")
         p.style.background="#6FCA55"
         p.style.color = "#ffffff"
         p.style.border="1px solid grey"
